@@ -11,9 +11,9 @@ public class DBConnection {
     private Connection connection;
 
     private String userName = "root";
-    private String password = "root"; // MAMP : root
+    private String password = ""; // MAMP : root
     private String serverName = "localhost";
-    private String portNumber = "8889"; // MAMP = 8889
+    private String portNumber = ""; // MAMP = 8889
     private String dbName = "testpersonne";
 
     private DBConnection() {
