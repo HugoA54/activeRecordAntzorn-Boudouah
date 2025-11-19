@@ -63,9 +63,7 @@ public class PrincipaleJDBC {
 
 //
 //            // suppression de la personne 1
-//            prep = connect.prepareStatement("DELETE FROM Personne WHERE id=?");
-//            prep.setInt(1, 1);
-//            prep.execute();
+
 //
 //            // recuperation de la seconde personne + affichage
 //            System.out.println("***** AFFICHE PERSONNE 2***** ");
@@ -105,8 +103,7 @@ public class PrincipaleJDBC {
 //                System.out.println("-> (" + id + ") " + nom + ", " + prenom);
 //            }
 //
-//            // suppression de la table personne
-//
+
 
         } catch (ClassNotFoundException e) {
             System.out.println("*** ERREUR lors du chargement du driver ***");

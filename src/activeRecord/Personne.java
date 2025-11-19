@@ -110,6 +110,17 @@ public class Personne {
     }
     }
 
+    public void delete(){
+    try {
+        PreparedStatement prep = DBConnection.getInstance().getConnection().prepareStatement("DELETE FROM Personne WHERE id=?");
+        prep.setInt(1, this.getId());
+        prep.execute();
+    }catch (SQLException e){
+        e.printStackTrace();
+    }
+        this.id = -1;
+    }
+
 
     public String getPrenom() {
         return prenom;
