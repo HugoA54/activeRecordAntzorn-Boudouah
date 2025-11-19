@@ -1,4 +1,3 @@
-import activeRecord.DBConnection;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,5 +19,23 @@ public class TestActiveRecord {
         db.setNomDB(nouvNom);
 
         assertEquals("Pas le bon nom", nouvNom, db.getNomDB());
+    }
+
+    @Test
+    public void test_setNomDB_memeNom() {
+        DBConnection db = DBConnection.getInstance();
+        String nom = db.getDBName();
+        String nouvNom = "test";
+
+        db.setNomDB(nouvNom);
+        db.setNomDB(nouvNom);
+
+        assertEquals("Pas le bon nom", nouvNom, db.getNomDB());
+    }
+
+    @Test
+    public void test_getConnection_typeOK(){
+        DBConnection db = DBConnection.getInstance();
+        assertEquals("Pas le bon type de connexion",db.getConnection() instanceof java.sql.Connection);
     }
 }
