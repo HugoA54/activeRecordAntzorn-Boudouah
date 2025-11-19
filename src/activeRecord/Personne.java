@@ -1,8 +1,5 @@
 package activeRecord;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Personne {
@@ -119,6 +116,45 @@ public class Personne {
         e.printStackTrace();
     }
         this.id = -1;
+    }
+
+    public void save(Personne personne){
+        if(personne.getId() == -1){
+            saveNew(personne);
+        }
+        else{
+            update(personne);
+        }
+    }
+
+    private void saveNew(Personne personne){
+        try {
+            Connection connect = DBConnection.getInstance().getConnection();
+            String SQLPrep = "INSERT INTO Personne (nom, prenom) VALUES (?,?);";
+            PreparedStatement prep;
+            prep = connect.prepareStatement(SQLPrep, Statement.RETURN_GENERATED_KEYS);
+            prep.setString(1, personne.getPrenom());
+            prep.setString(2, personne.getNom());
+            prep.executeUpdate();
+            
+            int autoInc = -1;
+            ResultSet rs = prep.getGeneratedKeys();
+            if (rs.next()) {
+                autoInc = rs.getInt(1);
+            }
+            personne.setId(autoInc);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void update(Personne personne){
+
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
 
