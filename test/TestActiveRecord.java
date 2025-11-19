@@ -1,3 +1,4 @@
+package activeRecord;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -36,6 +37,6 @@ public class TestActiveRecord {
     @Test
     public void test_getConnection_typeOK(){
         DBConnection db = DBConnection.getInstance();
-        assertEquals("Pas le bon type de connexion",db.getConnection() instanceof java.sql.Connection);
+        assertTrue("Pas le bon type",db.getConnection() instanceof java.sql.Connection);
     }
 }

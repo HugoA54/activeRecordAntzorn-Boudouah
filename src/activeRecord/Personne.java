@@ -1,3 +1,4 @@
+package activeRecord;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,6 +37,30 @@ public class Personne {
         return personnes;
     }
 
+    public static ArrayList<Personne> findByName(String nom){
+        ArrayList<Personne> personnes = new ArrayList<Personne>();
+        try {
+            System.out.println("***** Affichage par Nom ******" + nom);
+            String SQLPrep = "SELECT * FROM Personne WHERE nom=?;";
+            PreparedStatement prep1 = DBConnection.getInstance().getConnection().prepareStatement(SQLPrep);
+            prep1.setString(1, nom);
+            prep1.execute();
+            ResultSet rs = prep1.getResultSet();
+            if (rs.next()) {
+                String prenom = rs.getString("prenom");
+                nom = rs.getString("nom");
+                int id = rs.getInt("id");
+                personnes.add(new Personne(nom, prenom));
+            }
+            return personnes;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
     public static Personne findById(int id){
         try {
@@ -57,6 +82,15 @@ public class Personne {
             e.printStackTrace();
         }
                 return null;
+    }
+
+
+    public static void createTable(){
+
+    }
+
+    public static void deleteTable(){
+
     }
 
 

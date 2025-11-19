@@ -1,3 +1,4 @@
+package activeRecord;
 import java.sql.Connection;
 
 public class PrincipaleJDBC {
@@ -18,6 +19,10 @@ public class PrincipaleJDBC {
             Connection connect = DBConnection.getInstance().getConnection();
 
             for(Personne pers : Personne.findAll()){
+                System.out.println(pers.toString());
+            }
+
+            for(Personne pers : Personne.findByName("Scott")){
                 System.out.println(pers.toString());
             }
 
