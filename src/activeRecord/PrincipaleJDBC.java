@@ -29,11 +29,7 @@ public class PrincipaleJDBC {
 
             Personne personne = Personne.findById(1);
             System.out.println(personne.getNom() + " " + personne.getPrenom());
-//            String createString = "CREATE TABLE Personne ( "
-//                    + "ID INTEGER  AUTO_INCREMENT, " + "NOM varchar(40) NOT NULL, "
-//                    + "PRENOM varchar(40) NOT NULL, " + "PRIMARY KEY (ID))";
-//            Statement stmt = connect.createStatement();
-//            stmt.executeUpdate(createString);
+//
 //
 //            // ajout de personne avec requete preparee
 //            String SQLPrep = "INSERT INTO Personne (nom, prenom) VALUES (?,?);";

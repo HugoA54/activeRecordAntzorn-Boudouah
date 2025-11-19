@@ -2,6 +2,7 @@ package activeRecord;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Personne {
@@ -86,7 +87,16 @@ public class Personne {
 
 
     public static void createTable(){
-
+        try {
+            String createString = "CREATE TABLE Personne ( "
+                    + "ID INTEGER  AUTO_INCREMENT, " + "NOM varchar(40) NOT NULL, "
+                    + "PRENOM varchar(40) NOT NULL, " + "PRIMARY KEY (ID))";
+            Statement stmt = DBConnection.getInstance().getConnection().createStatement();
+            stmt.executeUpdate(createString);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     public static void deleteTable(){
