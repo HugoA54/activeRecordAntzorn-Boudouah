@@ -73,4 +73,9 @@ public class Personne {
     public String getNom() {
         return nom;
     }
+
+
+    public String toString(){
+        return "(" + nom + ", " + prenom + ")";
+    }
 }

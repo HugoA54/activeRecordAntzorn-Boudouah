@@ -25,7 +25,9 @@ public class PrincipaleJDBC {
 
             Connection connect = DBConnection.getInstance().getConnection();
 
-
+            for(Personne pers : Personne.findAll()){
+                System.out.println(pers.toString());
+            }
 
 
             Personne personne = Personne.findById(1);
