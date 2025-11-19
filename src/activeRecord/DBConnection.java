@@ -61,4 +61,8 @@ public class DBConnection {
         this.dbName = dbName;
         this.connection = null;
     }
+
+    public String getNomDB() {
+        return dbName;
+    }
 }
