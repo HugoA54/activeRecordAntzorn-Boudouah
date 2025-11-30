@@ -101,6 +101,27 @@ public class Film {
     }
 
 
+    private void saveNew() throws RealisateurAbsentException {
+
+        try {
+            String sql = "INSERT INTO Film (titre, id_real) VALUES (?, ?)";
+            PreparedStatement ps = DBConnection.getInstance().getConnection()
+                    .prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            ps.setString(1, this.titre);
+            ps.setInt(2, this.id_real);
+            ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) this.id = rs.getInt(1);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
 
