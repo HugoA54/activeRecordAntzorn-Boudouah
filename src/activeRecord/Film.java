@@ -121,6 +121,23 @@ public class Film {
     }
 
 
+    private void update() {
+
+        try {
+            String sql = "UPDATE Film SET titre = ?, id_real = ? WHERE id = ?";
+            PreparedStatement ps = DBConnection.getInstance().getConnection().prepareStatement(sql);
+
+            ps.setString(1, this.titre);
+            ps.setInt(2, this.id_real);
+            ps.setInt(3, this.id);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
