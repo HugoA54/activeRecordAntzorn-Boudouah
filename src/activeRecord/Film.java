@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Film {
     private String titre;
@@ -136,6 +137,30 @@ public class Film {
             e.printStackTrace();
         }
     }
+
+
+    public static ArrayList<Film> findByRealisateur(Personne p) {
+        ArrayList<Film> films = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Film WHERE id_real = ?";
+            PreparedStatement ps = DBConnection.getInstance().getConnection().prepareStatement(sql);
+            ps.setInt(1, p.getId());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Film f = new Film(
+                        rs.getString("titre"),
+                        rs.getInt("id"),
+                        rs.getInt("id_real")
+                );
+                films.add(f);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return films;
+    }
+
 
 
 
