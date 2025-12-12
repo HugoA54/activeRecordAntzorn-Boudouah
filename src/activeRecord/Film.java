@@ -169,6 +169,18 @@ public class Film {
         return "Titre: " + this.titre + ", id_real: " + this.id_real;
     }
 
+    public String getTitre(){
+        return titre;
+    }
+
+    public void setTitre(String titre){
+        this.titre = titre;
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
 
 
 
