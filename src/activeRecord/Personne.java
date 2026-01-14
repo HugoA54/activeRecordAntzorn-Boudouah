@@ -174,6 +174,16 @@ public class Personne {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object p){
+        if (p instanceof Personne){
+            Personne per = (Personne) p;
+            return per.nom.equals(this.nom);
+        }
+        return false;
+
+    }
+
 
     public String getPrenom() {
         return prenom;
